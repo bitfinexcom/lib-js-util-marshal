@@ -97,5 +97,90 @@ describe('loadInt tests', () => {
       const val2 = loadInt(Buffer.from('fc000000c0', 'hex'))
       assert.strictEqual(val2, -(2 ** 30))
     })
+
+    it('should return expected length for zero', () => {
+      const { len } = loadInt(Buffer.from('00', 'hex'), true)
+      assert.strictEqual(len, 1)
+    })
+
+    it('should return expected length for short positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('06', 'hex'), true)
+      assert.strictEqual(len1, 1)
+
+      const { len: len2 } = loadInt(Buffer.from('7f', 'hex'), true)
+      assert.strictEqual(len2, 1)
+    })
+
+    it('should return expected length for short negative ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('fa', 'hex'), true)
+      assert.strictEqual(len1, 1)
+
+      const { len: len2 } = loadInt(Buffer.from('80', 'hex'), true)
+      assert.strictEqual(len2, 1)
+    })
+
+    it('should return expected length for 2 byte positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('017b', 'hex'), true)
+      assert.strictEqual(len1, 2)
+
+      const { len: len2 } = loadInt(Buffer.from('01ff', 'hex'), true)
+      assert.strictEqual(len2, 2)
+    })
+
+    it('should return expected length for 2 byte negative ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('ff84', 'hex'), true)
+      assert.strictEqual(len1, 2)
+
+      const { len: len2 } = loadInt(Buffer.from('ff00', 'hex'), true)
+      assert.strictEqual(len2, 2)
+    })
+
+    it('should return expected length for 3 byte positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('020001', 'hex'), true)
+      assert.strictEqual(len1, 3)
+
+      const { len: len2 } = loadInt(Buffer.from('02ffff', 'hex'), true)
+      assert.strictEqual(len2, 3)
+    })
+
+    it('should return expected length for 3 byte negative ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('fefffe', 'hex'), true)
+      assert.strictEqual(len1, 3)
+
+      const { len: len2 } = loadInt(Buffer.from('fe0000', 'hex'), true)
+      assert.strictEqual(len2, 3)
+    })
+
+    it('should return expected length for 4 byte positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('03000001', 'hex'), true)
+      assert.strictEqual(len1, 4)
+
+      const { len: len2 } = loadInt(Buffer.from('03ffffff', 'hex'), true)
+      assert.strictEqual(len2, 4)
+    })
+
+    it('should return expected length for 4 byte negative ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('fdfffffe', 'hex'), true)
+      assert.strictEqual(len1, 4)
+
+      const { len: len2 } = loadInt(Buffer.from('fd000000', 'hex'), true)
+      assert.strictEqual(len2, 4)
+    })
+
+    it('should return expected length for 5 byte positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('0400000001', 'hex'), true)
+      assert.strictEqual(len1, 5)
+
+      const { len: len2 } = loadInt(Buffer.from('04ffffff3f', 'hex'), true)
+      assert.strictEqual(len2, 5)
+    })
+
+    it('should return expected length for 5 byte positive ints', () => {
+      const { len: len1 } = loadInt(Buffer.from('fcfffffffe', 'hex'), true)
+      assert.strictEqual(len1, 5)
+
+      const { len: len2 } = loadInt(Buffer.from('fc000000c0', 'hex'), true)
+      assert.strictEqual(len2, 5)
+    })
   })
 })
