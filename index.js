@@ -30,6 +30,7 @@ module.exports = {
   dumpString,
   dumpSymbol,
   dumpSymbolLink,
+  dumpSymbolOrLink: dumpComplex.dumpSymbolOrLink,
   encodeType: dumpComplex.encodeType,
   load,
   loadArray: loadComplex.loadArray,

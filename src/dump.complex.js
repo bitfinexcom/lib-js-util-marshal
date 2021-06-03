@@ -95,5 +95,6 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
 module.exports = {
   dumpArray,
   dumpHash,
+  dumpSymbolOrLink,
   encodeType
 }
