@@ -14,6 +14,7 @@ const load = require('./src/load')
 const loadFloat = require('./src/load.float')
 const loadInt = require('./src/load.int')
 const loadString = require('./src/load.string')
+const loadSymbolLink = require('./src/load.symbol.link')
 
 module.exports = {
   CONSTANTS: Object.freeze(CONSTANTS),
@@ -34,5 +35,6 @@ module.exports = {
   loadHash: loadComplex.loadHash,
   loadInt,
   loadIVAR: loadComplex.loadIVAR,
-  loadString
+  loadString,
+  loadSymbolLink
 }
