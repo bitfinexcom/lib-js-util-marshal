@@ -5,7 +5,7 @@
 const assert = require('assert')
 const { encodeType } = require('../src/dump.complex')
 
-describe.only('encodeType tests', () => {
+describe('encodeType tests', () => {
   it('should encode strings correctly', () => {
     const d = encodeType('test', [])
     assert.strictEqual(d instanceof Buffer, true)
