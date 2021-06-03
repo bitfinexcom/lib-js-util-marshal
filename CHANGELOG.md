@@ -14,5 +14,5 @@
 - feat: loading nil values (are converted to null on js)
 - feat: loading boolean values
 - feat: loading symbols (in js are converted to strings)
-- feat: loading arrays (symlinks are not supported yet)
-- feat: loading hashes (symlinks are not supported yet)
+- feat: loading arrays
+- feat: loading hashes

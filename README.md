@@ -19,11 +19,11 @@ in NodeJS.
 - loading nil values (are converted to null on js)
 - loading boolean values
 - loading symbols (in js are converted to strings)
-- loading arrays (symlinks are not supported yet)
-- loading hashes (symlinks are not supported yet)
+- loading arrays
+- loading hashes
 
 **Unsupported features**
-- bumping/loading symlinks
+- bumping symlinks
 - bumping/loading bignums
 - bumping/loading objects
 - bumping/loading object links
