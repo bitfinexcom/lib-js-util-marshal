@@ -9,6 +9,7 @@ const dumpInt = require('./src/dump.int')
 const dumpNull = require('./src/dump.null')
 const dumpString = require('./src/dump.string')
 const dumpSymbol = require('./src/dump.symbol')
+const dumpSymbolLink = require('./src/dump.symbol.link')
 const loadComplex = require('./src/load.complex')
 const load = require('./src/load')
 const loadFloat = require('./src/load.float')
@@ -28,6 +29,7 @@ module.exports = {
   dumpNull,
   dumpString,
   dumpSymbol,
+  dumpSymbolLink,
   encodeType: dumpComplex.encodeType,
   load,
   loadArray: loadComplex.loadArray,

@@ -8,9 +8,11 @@ const { encodeType } = require('./dump.complex')
  * @returns {Buffer}
  */
 const dump = (val, ver = [4, 8]) => {
+  const symcache = []
+
   return Buffer.concat([
     Buffer.from(ver),
-    encodeType(val)
+    encodeType(val, symcache)
   ])
 }
 

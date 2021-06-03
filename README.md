@@ -10,8 +10,9 @@ in NodeJS.
 - dumping nil values (null and undefined)
 - dumping boolean values
 - dumping symbols (js symbols are converted to ruby symbols)
-- dumping arrays (symlinks are not supported yet)
-- dumping hashes (symlinks are not supported yet)
+- dumping symbol links (each js symbol is converted to symbol link when necessary)
+- dumping arrays
+- dumping hashes
 - loading integers
 - loading raw strings
 - loading ivar strings
@@ -19,11 +20,11 @@ in NodeJS.
 - loading nil values (are converted to null on js)
 - loading boolean values
 - loading symbols (in js are converted to strings)
+- loading symbol links (in js are converted to strings)
 - loading arrays
 - loading hashes
 
 **Unsupported features**
-- bumping symlinks
 - bumping/loading bignums
 - bumping/loading objects
 - bumping/loading object links
