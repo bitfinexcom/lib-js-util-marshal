@@ -12,7 +12,8 @@ const T_STRING = 0x22 // '"'
 const T_SYMBOL = 0x3a // ':'
 const T_HASH = 0x7b // '{'
 const T_ARRAY = 0x5b // '[',
-const T_IVAR = 0x49// 'I'
+const T_IVAR = 0x49 // 'I'
+const T_SYMBOL_LINK = 0x3b // ';'
 
 module.exports = {
   SIZEOF_LONG,
@@ -27,5 +28,6 @@ module.exports = {
   T_SYMBOL,
   T_HASH,
   T_ARRAY,
-  T_IVAR
+  T_IVAR,
+  T_SYMBOL_LINK
 }
