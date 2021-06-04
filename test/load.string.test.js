@@ -7,17 +7,17 @@ const loadString = require('../src/load.string')
 const { STR_ENCODINGS } = require('../src/constants')
 
 describe('loadString tests', () => {
-  it('should encode string in expected format', () => {
+  it('should decode strings', () => {
     const val = loadString(Buffer.from('0a68656c6c6f', 'hex'))
     assert.strictEqual(val, 'hello')
   })
 
-  it('should encode large string in expected format', () => {
+  it('should decode large strings', () => {
     const val = loadString(Buffer.from('022e016261616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616162', 'hex'))
     assert.strictEqual(val, 'baaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab')
   })
 
-  it('should encode empty string in expected format', () => {
+  it('should decode empty strings', () => {
     const val = loadString(Buffer.from('00', 'hex'))
     assert.strictEqual(val, '')
   })
