@@ -9,8 +9,7 @@ const loadInt = require('./load.int')
  * @returns {string | { value: string, len: number }}
  */
 const loadSymbolLink = (buff, symcache, retlen = false) => {
-  const index = loadInt(buff)
-  const len = 1
+  const { value: index, len } = loadInt(buff, true)
 
   const value = symcache[index]
   return retlen ? { value, len } : value
