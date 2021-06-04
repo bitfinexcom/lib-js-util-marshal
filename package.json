@@ -1,6 +1,6 @@
 {
   "name": "@bitfinex/lib-js-util-marshal",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "nodejs library for serialization/deserialization of data based on ruby marshal protocol",
   "main": "index.js",
   "scripts": {

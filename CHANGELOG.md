@@ -1,4 +1,4 @@
-# 0.1.0
+# 0.9.0
 - feat: dumping integers
 - feat: dumping raw strings (ivar strings don't exist in js so raw strings are encoded in utf-8)
 - feat: dumping floats
