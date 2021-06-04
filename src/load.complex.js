@@ -18,10 +18,8 @@ const {
  * @returns {Array<any>  | { value: Array<any>, len: number }}
  */
 const loadArray = (buff, symcache, retlen = false) => {
-  const arrlen = loadInt(buff)
-  const first = buff.readInt8(0)
-  let start = 1 // short int, simply skip 1
-  if (first > -6 && first < 6) start = first + 1 // 2-4 byte int, get num of bytes + 1
+  const { value: arrlen, len: arrCountBytes } = loadInt(buff, true)
+  const start = arrCountBytes
 
   const raw = buff.slice(start)
   const data = []
@@ -46,10 +44,8 @@ const loadArray = (buff, symcache, retlen = false) => {
  * @returns {Object<string, any>  | { value: Object<string, any>, len: number }}
  */
 const loadHash = (buff, symcache, retlen = false) => {
-  const maplen = loadInt(buff)
-  const first = buff.readInt8(0)
-  let start = 1 // short int, simply skip 1
-  if (first > -6 && first < 6) start = first + 1 // 2-4 byte int, get num of bytes + 1
+  const { value: maplen, len: mapCountBytes } = loadInt(buff, true)
+  const start = mapCountBytes
 
   const raw = buff.slice(start)
   const data = {}
@@ -81,19 +77,15 @@ const loadHash = (buff, symcache, retlen = false) => {
  */
 const loadIVAR = (buff, symcache, retlen = false) => {
   const strchunk = buff.slice(1) // first byte is '"'
-  const strlen = loadInt(strchunk)
-  const strfirst = strchunk.readInt8(0)
-  let strstart = 1 // short int, simply skip 1
-  if (strfirst > -6 && strfirst < 6) strstart = strfirst + 1 // 2-4 byte int, get num of bytes + 1
+  const { value: strlen, len: strCountBytes } = loadInt(strchunk, true)
+  const strstart = strCountBytes
   const strend = strstart + strlen
 
   const varchunk = buff.slice(strend + 1)
-  const varlen = loadInt(varchunk)
-  const varfirst = varchunk.readInt8(0)
-  let varstart = 1 // short int, simply skip 1
-  if (varfirst > -6 && varfirst < 6) varstart = varfirst + 1 // 2-4 byte int, get num of bytes + 1
+  const { value: varlen, len: varCountBytes } = loadInt(varchunk, true)
+  const varstart = varCountBytes
 
-  const raw = varchunk.slice(1)
+  const raw = varchunk.slice(varstart)
   const data = {}
   const keys = []
 
