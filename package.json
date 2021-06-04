@@ -4,6 +4,7 @@
   "description": "nodejs library for serialization/deserialization of data based on ruby marshal protocol",
   "main": "index.js",
   "scripts": {
+    "coverage": "nyc --reporter=html mocha",
     "lint": "standard",
     "format": "standard --fix",
     "test": "npm run lint && npm run test:code",
@@ -42,6 +43,7 @@
   "homepage": "https://github.com/bitfinexcom/lib-js-util-marshal#readme",
   "devDependencies": {
     "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
     "standard": "^16.0.3"
   }
 }
