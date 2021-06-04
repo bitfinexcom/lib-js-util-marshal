@@ -15,6 +15,14 @@ const T_ARRAY = 0x5b // '[',
 const T_IVAR = 0x49 // 'I'
 const T_SYMBOL_LINK = 0x3b // ';'
 
+const STR_ENCODINGS = {
+  'UTF-8': 'utf8',
+  'US-ASCII': 'ascii',
+  'UTF-16LE': 'utf16le',
+  'ISO-8859-1': 'latin1'
+}
+Object.freeze(STR_ENCODINGS)
+
 module.exports = {
   SIZEOF_LONG,
   MAX_INT_POS,
@@ -29,5 +37,6 @@ module.exports = {
   T_HASH,
   T_ARRAY,
   T_IVAR,
-  T_SYMBOL_LINK
+  T_SYMBOL_LINK,
+  STR_ENCODINGS
 }

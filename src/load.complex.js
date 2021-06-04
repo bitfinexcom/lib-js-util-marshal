@@ -8,7 +8,7 @@ const loadSymbolLink = require('./load.symbol.link')
 const {
   T_NULL, T_TRUE, T_FALSE, T_INT, T_FLOAT,
   T_STRING, T_SYMBOL, T_HASH, T_ARRAY,
-  T_IVAR, T_SYMBOL_LINK
+  T_IVAR, T_SYMBOL_LINK, STR_ENCODINGS
 } = require('./constants')
 
 /**
@@ -113,11 +113,12 @@ const loadIVAR = (buff, symcache, retlen = false) => {
     keys.push(key)
   }
 
-  let enc = 'utf8'
-  if (keys.includes('E')) enc = data.E ? 'utf8' : 'ascii'
-  if (keys.includes('encoding')) enc = data.encoding
+  let rubyEnc
+  if (keys.includes('E')) rubyEnc = data.E ? 'UTF-8' : 'US-ASCII'
+  if (keys.includes('encoding')) rubyEnc = data.encoding.toUpperCase()
+  if (!STR_ENCODINGS[rubyEnc]) throw new Error('ERR_MARSHAL_STR_ENCODING_NOT_SUPPORTED')
 
-  const str = loadString(strchunk, false, enc)
+  const str = loadString(strchunk, false, STR_ENCODINGS[rubyEnc])
   const len = strend + varstart + byteIndex + 1 // string content + var count + var byte length + '"'
 
   return retlen ? { value: str, len } : str
