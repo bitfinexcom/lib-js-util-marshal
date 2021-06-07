@@ -1,7 +1,7 @@
 # 0.9.0
 - feat: dumping integers
 - feat: dumping raw strings (ivar strings don't exist in js so raw strings are encoded in utf-8)
-- feat: dumping floats
+- feat: dumping floats (1.0 is dumped as int type due to NodeJS number type)
 - feat: dumping nil values (null and undefined)
 - feat: dumping boolean values
 - feat: dumping symbols (js symbols are converted to ruby symbols)
@@ -11,7 +11,7 @@
 - feat: loading integers
 - feat: loading raw strings
 - feat: loading ivar strings
-- feat: loading floats
+- feat: loading floats (1.0 is loaded as int type due to NodeJS number type)
 - feat: loading nil values (are converted to null on js)
 - feat: loading boolean values
 - feat: loading symbols (in js are converted to strings)
