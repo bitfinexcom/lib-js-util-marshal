@@ -1,5 +1,6 @@
 'use strict'
 
+const _isPlainObject = require('lodash/isPlainObject')
 const dumpBool = require('./dump.bool')
 const dumpFloat = require('./dump.float')
 const dumpInt = require('./dump.int')
@@ -82,6 +83,7 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
     case 'object':
       if (val === null) return dumpNull()
       if (Array.isArray(val)) return dumpArray(val, symcache)
+      if (!_isPlainObject(val)) throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
       return dumpHash(val, symcache)
     case 'symbol':
       symbol = val.toString().replace(/^Symbol\(/, '').replace(/\)$/, '')

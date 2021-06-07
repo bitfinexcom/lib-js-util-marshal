@@ -12,7 +12,7 @@ in NodeJS.
 - dumping symbols (js symbols are converted to ruby symbols)
 - dumping symbol links (each js symbol is converted to symbol link when necessary)
 - dumping arrays
-- dumping hashes
+- dumping hashes (non plain objects will throw)
 - loading integers
 - loading raw strings
 - loading ivar strings

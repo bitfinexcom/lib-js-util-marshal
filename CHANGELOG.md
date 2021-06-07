@@ -7,7 +7,7 @@
 - feat: dumping symbols (js symbols are converted to ruby symbols)
 - feat: dumping symbol links (each js symbol is converted to symbol link when necessary)
 - feat: dumping arrays
-- feat: dumping hashes
+- feat: dumping hashes (non plain objects will throw)
 - feat: loading integers
 - feat: loading raw strings
 - feat: loading ivar strings

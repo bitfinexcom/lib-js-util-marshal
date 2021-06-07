@@ -105,4 +105,18 @@ describe('encodeType tests', () => {
       new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
     )
   })
+
+  it('should throw on non plain objects', () => {
+    const samples = [
+      Buffer.from([1, 2, 3]),
+      new Map([['foo', 'bar'], ['test', 123]])
+    ]
+
+    for (const data of samples) {
+      assert.throws(
+        () => encodeType(data, []),
+        new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
+      )
+    }
+  })
 })
