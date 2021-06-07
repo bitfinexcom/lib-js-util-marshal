@@ -39,11 +39,8 @@ describe('load tests', () => {
   })
 
   it('should decode symbols correctly', () => {
-    const val1 = load(Buffer.from('04083a0974657374', 'hex'))
-    assert.strictEqual(val1, 'test')
-
-    const val2 = load(Buffer.from('04083a0974657374', 'hex'))
-    assert.strictEqual(val2, 'test')
+    const val = load(Buffer.from('04083a0974657374', 'hex'))
+    assert.strictEqual(val, 'test')
   })
 
   it('should decode ivars correctly', () => {
