@@ -84,7 +84,7 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
       if (Array.isArray(val)) return dumpArray(val, symcache)
       return dumpHash(val, symcache)
     case 'symbol':
-      symbol = val.toString().replace('Symbol(', '').replace(')', '')
+      symbol = val.toString().replace(/^Symbol\(/, '').replace(/\)$/, '')
       return dumpSymbolOrLink(symbol, symcache)
     case 'undefined': // undefined or null is nil in ruby
       return dumpNull()
