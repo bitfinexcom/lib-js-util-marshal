@@ -86,8 +86,6 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
     case 'symbol':
       symbol = val.toString().replace(/^Symbol\(/, '').replace(/\)$/, '')
       return dumpSymbolOrLink(symbol, symcache)
-    case 'undefined': // undefined or null is nil in ruby
-      return dumpNull()
     default: throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
   }
 }

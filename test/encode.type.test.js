@@ -23,13 +23,9 @@ describe('encodeType tests', () => {
   })
 
   it('should encode nils correctly', () => {
-    const d1 = encodeType(null, [])
-    assert.strictEqual(d1 instanceof Buffer, true)
-    assert.strictEqual(d1.toString('hex'), '30')
-
-    const d2 = encodeType(undefined, [])
-    assert.strictEqual(d2 instanceof Buffer, true)
-    assert.strictEqual(d2.toString('hex'), '30')
+    const d = encodeType(null, [])
+    assert.strictEqual(d instanceof Buffer, true)
+    assert.strictEqual(d.toString('hex'), '30')
   })
 
   it('should encode numbers correctly', () => {
@@ -101,6 +97,11 @@ describe('encodeType tests', () => {
   it('should throw on unsupported type', () => {
     assert.throws(
       () => encodeType(BigInt('9007199254740991'), []),
+      new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
+    )
+
+    assert.throws(
+      () => encodeType(undefined, []),
       new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
     )
   })

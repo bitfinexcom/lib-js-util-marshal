@@ -23,13 +23,9 @@ describe('dump tests', () => {
   })
 
   it('should encode nils correctly', () => {
-    const d1 = dump(null)
-    assert.strictEqual(d1 instanceof Buffer, true)
-    assert.strictEqual(d1.toString('hex'), '040830')
-
-    const d2 = dump(undefined)
-    assert.strictEqual(d2 instanceof Buffer, true)
-    assert.strictEqual(d2.toString('hex'), '040830')
+    const d = dump(null)
+    assert.strictEqual(d instanceof Buffer, true)
+    assert.strictEqual(d.toString('hex'), '040830')
   })
 
   it('should encode numbers correctly', () => {

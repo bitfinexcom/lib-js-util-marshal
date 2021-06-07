@@ -2,7 +2,7 @@
 - feat: dumping integers
 - feat: dumping raw strings (ivar strings don't exist in js so raw strings are encoded in utf-8)
 - feat: dumping floats (1.0 is dumped as int type due to NodeJS number type)
-- feat: dumping nil values (null and undefined)
+- feat: dumping nil values (null values)
 - feat: dumping boolean values
 - feat: dumping symbols (js symbols are converted to ruby symbols)
 - feat: dumping symbol links (each js symbol is converted to symbol link when necessary)
