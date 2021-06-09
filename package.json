@@ -1,0 +1,52 @@
+{
+  "name": "@bitfinex/lib-js-util-marshal",
+  "version": "0.9.0",
+  "description": "nodejs library for serialization/deserialization of data based on ruby marshal protocol",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "nyc --reporter=html mocha",
+    "lint": "standard",
+    "format": "standard --fix",
+    "test": "npm run lint && npm run test:code",
+    "test:code": "NODE_ENV=test mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitfinexcom/lib-js-util-marshal.git"
+  },
+  "keywords": [
+    "ruby",
+    "marshal",
+    "buffer",
+    "serialization",
+    "object marshaling",
+    "marshaling"
+  ],
+  "author": {
+    "name": "vigan.abd",
+    "email": "vigan.abdurrahmani@bitfinex.com"
+  },
+  "maintainers": [
+    {
+      "name": "prdn",
+      "email": "paolo@bitfinex.com"
+    },
+    {
+      "name": "vigan.abd",
+      "email": "vigan.abdurrahmani@bitfinex.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bitfinexcom/lib-js-util-marshal/issues"
+  },
+  "homepage": "https://github.com/bitfinexcom/lib-js-util-marshal#readme",
+  "devDependencies": {
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "standard": "^16.0.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
