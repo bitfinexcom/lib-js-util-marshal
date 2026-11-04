@@ -4,11 +4,11 @@
   "description": "nodejs library for serialization/deserialization of data based on ruby marshal protocol",
   "main": "index.js",
   "scripts": {
-    "coverage": "nyc --reporter=html mocha",
     "lint": "bfx-lint-js",
     "lint:fix": "bfx-lint-js --fix",
     "test": "npm run lint && npm run test:code",
-    "test:code": "NODE_ENV=test brittle-node ./test/*.js"
+    "test:code": "NODE_ENV=test brittle-node ./test/*.js",
+    "test:coverage": "brittle-node --coverage ./test/*.js"
   },
   "repository": {
     "type": "git",
