@@ -1,6 +1,5 @@
 'use strict'
 
-const _isPlainObject = require('lodash/isPlainObject')
 const dumpBool = require('./dump.bool')
 const dumpFloat = require('./dump.float')
 const dumpInt = require('./dump.int')
@@ -72,7 +71,7 @@ const dumpHash = (obj, symcache) => {
  * @returns {Buffer}
  */
 const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013/01/15/a-little-dip-into-rubys-marshal-format
-  let symbol
+  let symbol, proto
 
   switch (typeof val) {
     case 'string': return dumpString(val)
@@ -83,7 +82,8 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
     case 'object':
       if (val === null) return dumpNull()
       if (Array.isArray(val)) return dumpArray(val, symcache)
-      if (!_isPlainObject(val)) throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
+      proto = Object.getPrototypeOf(val)
+      if (proto !== Object.prototype && proto !== null) throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
       return dumpHash(val, symcache)
     case 'symbol':
       symbol = val.toString().replace(/^Symbol\(/, '').replace(/\)$/, '')

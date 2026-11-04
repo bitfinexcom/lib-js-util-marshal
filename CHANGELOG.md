@@ -1,3 +1,6 @@
+# 1.0.0
+- chore: deprecate node versions lower than 22
+
 # 0.9.0
 - feat: dumping integers
 - feat: dumping raw strings (ivar strings don't exist in js so raw strings are encoded in utf-8)

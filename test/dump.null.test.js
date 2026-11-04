@@ -1,14 +1,10 @@
-/* eslint-env mocha */
-
 'use strict'
 
-const assert = require('assert')
+const test = require('brittle')
 const dumpNull = require('../src/dump.null')
 
-describe('dumpNull tests', () => {
-  it('should return expected format', () => {
-    const d = dumpNull()
-    assert.strictEqual(d instanceof Buffer, true)
-    assert.strictEqual(d.toString('hex'), '30')
-  })
+test('dumpNull tests - should return expected format', (t) => {
+  const d = dumpNull()
+  t.is(d instanceof Buffer, true)
+  t.is(d.toString('hex'), '30')
 })

@@ -1,20 +1,16 @@
-/* eslint-env mocha */
-
 'use strict'
 
-const assert = require('assert')
+const test = require('brittle')
 const dumpBool = require('../src/dump.bool')
 
-describe('dumpBool tests', () => {
-  it('should return expected format for true', () => {
-    const d = dumpBool(true)
-    assert.strictEqual(d instanceof Buffer, true)
-    assert.strictEqual(d.toString('hex'), '54')
-  })
+test('dumpBool tests - should return expected format for true', (t) => {
+  const d = dumpBool(true)
+  t.is(d instanceof Buffer, true)
+  t.is(d.toString('hex'), '54')
+})
 
-  it('should return expected format for false', () => {
-    const d = dumpBool(false)
-    assert.strictEqual(d instanceof Buffer, true)
-    assert.strictEqual(d.toString('hex'), '46')
-  })
+test('dumpBool tests - should return expected format for false', (t) => {
+  const d = dumpBool(false)
+  t.is(d instanceof Buffer, true)
+  t.is(d.toString('hex'), '46')
 })
