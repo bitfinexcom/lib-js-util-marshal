@@ -80,10 +80,16 @@ const encodeType = (val, symcache) => { // see http://jakegoulding.com/blog/2013
       if (Number.isInteger(val)) return dumpInt(val)
       return dumpFloat(val)
     case 'object':
-      if (val === null) return dumpNull()
-      if (Array.isArray(val)) return dumpArray(val, symcache)
+      if (val === null) {
+        return dumpNull()
+      }
+      if (Array.isArray(val)) {
+        return dumpArray(val, symcache)
+      }
       proto = Object.getPrototypeOf(val)
-      if (proto !== Object.prototype && proto !== null) throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
+      if (proto !== null && proto !== Object.prototype && Object.getPrototypeOf(proto) !== null) {
+        throw new Error('ERR_MARSHAL_TYPE_NOT_SUPPORTED')
+      }
       return dumpHash(val, symcache)
     case 'symbol':
       symbol = val.toString().replace(/^Symbol\(/, '').replace(/\)$/, '')

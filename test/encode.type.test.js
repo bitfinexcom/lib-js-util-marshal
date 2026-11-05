@@ -1,6 +1,7 @@
 'use strict'
 
 const test = require('brittle')
+const { runInNewContext } = require('vm')
 const { encodeType } = require('../src/dump.complex')
 
 test('encodeType tests - should encode strings correctly', (t) => {
@@ -106,4 +107,9 @@ test('encodeType tests - should throw on non plain objects', (t) => {
   for (const data of samples) {
     t.exception(() => encodeType(data, []), /ERR_MARSHAL_TYPE_NOT_SUPPORTED/)
   }
+})
+
+test('encodeType tests - should encode plain objects from other realms', (t) => {
+  const val = encodeType(runInNewContext('({ test: 123 })'), [])
+  t.is(val.toString('hex'), '7b063a097465737469017b')
 })
