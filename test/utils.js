@@ -1,13 +1,15 @@
 'use strict'
 
-const { exec } = require('child_process')
+const { exec, execSync } = require('child_process')
 
-const hasRuby = () => new Promise((resolve) => exec('ruby -v', (err, stdout, stderr) => {
-  if (err) return resolve(false)
-  if (stderr) return resolve(false)
-
-  resolve(stdout.trim().startsWith('ruby'))
-}))
+const hasRuby = () => {
+  try {
+    const out = execSync('ruby -v', { stdio: ['ignore', 'pipe', 'pipe'] }).toString()
+    return out.trim().startsWith('ruby')
+  } catch (err) {
+    return false
+  }
+}
 
 const dumpRuby = (str) => {
   const cmd = `ruby -e 'puts Marshal.dump(${str}).unpack("H*")[0]'`

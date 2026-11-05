@@ -1,14 +1,14 @@
 {
   "name": "@bitfinexorg/lib-js-util-marshal",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "description": "nodejs library for serialization/deserialization of data based on ruby marshal protocol",
   "main": "index.js",
   "scripts": {
-    "coverage": "nyc --reporter=html mocha",
-    "lint": "standard",
-    "format": "standard --fix",
+    "lint": "bfx-lint-js",
+    "lint:fix": "bfx-lint-js --fix",
     "test": "npm run lint && npm run test:code",
-    "test:code": "NODE_ENV=test mocha test"
+    "test:code": "NODE_ENV=test brittle-node ./test/*.js",
+    "test:coverage": "brittle-node --coverage ./test/*.js"
   },
   "repository": {
     "type": "git",
@@ -41,12 +41,11 @@
     "url": "https://github.com/bitfinexcom/lib-js-util-marshal/issues"
   },
   "homepage": "https://github.com/bitfinexcom/lib-js-util-marshal#readme",
-  "devDependencies": {
-    "mocha": "^8.4.0",
-    "nyc": "^15.1.0",
-    "standard": "^16.0.3"
+  "engines": {
+    "node": ">=22.0"
   },
-  "dependencies": {
-    "lodash": "^4.17.21"
+  "devDependencies": {
+    "@bitfinex/lint-js": "^1.1.0",
+    "brittle": "^4.5.0"
   }
 }
